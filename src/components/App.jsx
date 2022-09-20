@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
 
-//Getting data fro locale storage
+//Getting data fro local storage
 const getLocalData=()=>{
     const notes=localStorage.getItem('notes');
     if(notes){
@@ -29,15 +28,14 @@ function App() {
     function deleteNote(id){
         setNotes(prevNote=>{
             return prevNote.filter((noteItem,index)=>{
-                return index!==id
+                return index!==id;
             })
         })
     }
   return (
     <div>
       <Header />
-      <CreateArea
-       onAdd={addNote} />
+      <CreateArea onAdd={addNote} />
        {notes.map((noteItem,index)=>{
             return <Note 
             id={index}
@@ -45,7 +43,6 @@ function App() {
             title={noteItem.title} 
             content={noteItem.content} onDelete={deleteNote} />
        })}
-      <Footer />
     </div>
   );
 }
